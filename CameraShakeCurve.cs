@@ -23,12 +23,6 @@ public class CameraShakeCurve : MonoBehaviour {
 
     void Update() {
 
-        // If the state is 0 (it is not shaking already)
-        // and we press Fire 1 we change to the state 1
-        if(state == 0 && Input.GetButtonDown("Fire1")) {
-            state = 1;
-        }
-
         // Here we evaluate the curve based on the normalized time
         if (state == 1) {
             float t = time / duration; // Normalize the time
@@ -41,6 +35,14 @@ public class CameraShakeCurve : MonoBehaviour {
                 time = 0;
                 state = 0;
             }
+        }
+    }
+
+    public void Activate() {
+        // If the state is 0 (it is not shaking already)
+        // and we press Fire 1 we change to the state 1
+        if (state == 0) {
+            state = 1;
         }
     }
 }
